@@ -6,8 +6,9 @@ final MyProvider myProvider = MyProvider();
 
 class MyProvider extends ChangeNotifier {
   final UserRepository userRepository = UserRepository();
-
   UserModel? userData;
+  final nameController = TextEditingController();
+  String nameError = '유저 이름은 2자 이상 20자 이하여야 합니다.';
 
   int? hour;
   int? minutes;
@@ -20,6 +21,11 @@ class MyProvider extends ChangeNotifier {
 
   Future<void> getMyData() async {
     userData = await userRepository.getMyData();
+    notifyListeners();
+  }
+
+  Future<void> changeName() async {
+    nameError = await userRepository.changeUserName(nameController.text);
     notifyListeners();
   }
 

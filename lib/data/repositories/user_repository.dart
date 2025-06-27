@@ -35,4 +35,29 @@ class UserRepository {
     }
   }
 
+  Future<String>changeUserName(String name) async {
+    try {
+      final response = await client.post(
+          Uri.parse('${url}/user/name').replace(queryParameters: {'newName' : name}),
+          headers: {
+            'Authorization' : 'Bearer $tkn',
+          }
+      );
+
+      final jsonBody = await jsonDecode(response.body);
+      if(response.statusCode >= 200 && response.statusCode < 300) {
+        // print(jsonBody['data']);
+        print(jsonBody['message']);
+        return jsonBody['message'];
+      }
+
+      print(jsonBody['message']);
+      return jsonBody['message'];
+
+    } catch(e) {
+      print('이름 바꾸기 에러다: $e');
+      return '';
+    }
+  }
+
 }
