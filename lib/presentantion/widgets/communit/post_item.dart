@@ -30,11 +30,11 @@ class PostItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    postData.writer,
+                    postData.authorName,
                     style: mediumText(size: 12, color: Colors.black),
                   ),
                   Text(
-                    '${postData.minutes}분 전',
+                    postData.createdAt,
                     style: mediumText(size: 10, color: greyColor),
                   ),
                 ],
@@ -53,15 +53,15 @@ class PostItem extends StatelessWidget {
                   color: litePointColor,
                 ),
                 child: Text(
-                  postData.category,
-                  style: boldText(size: 11, color: pointColor),
+                  postData.authorTier,
+                  style: semiBoldText(size: 11, color: pointColor),
                 ),
               ),
               SizedBox(width: 5),
               Expanded(
                 child: Text(
                   postData.title,
-                  style: boldText(size: 16, color: Colors.black),
+                  style: semiBoldText(size: 16, color: Colors.black),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -70,18 +70,10 @@ class PostItem extends StatelessWidget {
           SizedBox(height: 5,),
           SizedBox(
             width: double.infinity,
-            child: Text(postData.description, style: mediumText(size: 12, color: Colors.black), overflow: TextOverflow.ellipsis, maxLines: 2,),
+            child: Text(postData.content, style: mediumText(size: 12, color: Colors.black), overflow: TextOverflow.ellipsis, maxLines: 2,),
           ),
           SizedBox(height: 10,),
-          Row(
-            children: [
-              _iconAndData(text: postData.views, icon: Icons.remove_red_eye),
-              SizedBox(width: 5,),
-              _iconAndData(text: postData.comments, icon: Icons.chat),
-              SizedBox(width: 5,),
-              _iconAndData(text: postData.likes, icon: Icons.favorite),
-            ],
-          ),
+          _iconAndData(text: postData.commentCount, icon: Icons.chat),
           SizedBox(height: 10,),
           Container(
             width: double.infinity,

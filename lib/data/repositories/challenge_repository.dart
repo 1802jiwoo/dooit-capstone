@@ -146,6 +146,7 @@ class ChallengeRepository {
 
       if(response.statusCode >= 200 && response.statusCode < 300) {
         final jsonBody = await jsonDecode(response.body);
+        // print(jsonBody['data']);
         final id = jsonBody['data']['challenge_id'];
         print('my 챌린지 id 가져오기 성공');
         return id;

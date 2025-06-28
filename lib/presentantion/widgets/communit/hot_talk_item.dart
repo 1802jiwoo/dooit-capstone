@@ -1,16 +1,12 @@
 import 'package:capstone_project_2/common/colors.dart';
 import 'package:capstone_project_2/common/fonts.dart';
+import 'package:capstone_project_2/data/models/post_model.dart';
 import 'package:flutter/material.dart';
 
 class HotTalkItem extends StatelessWidget {
-  const HotTalkItem({super.key, required this.teg, required this.title, required this.description, required this.views, required this.comments, required this.likes});
+  const HotTalkItem({super.key, required this.postData});
 
-  final String teg;
-  final String title;
-  final String description;
-  final int views;
-  final int comments;
-  final int likes;
+ final PostModel postData;
 
   @override
   Widget build(BuildContext context) {
@@ -35,28 +31,20 @@ class HotTalkItem extends StatelessWidget {
                   children: [
                     SizedBox(height: 15,),
                     Text(
-                      title,
-                      style: boldText(size: 13, color: Colors.white),
+                      postData.title,
+                      style: semiBoldText(size: 13, color: Colors.white),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(height: 5,),
                     Text(
-                      description,
+                      postData.content,
                       style: mediumText(size: 11, color: Colors.white),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(height: 10,),
-                    Row(
-                      children: [
-                        _iconAndData(text: views, icon: Icons.remove_red_eye),
-                        SizedBox(width: 5,),
-                        _iconAndData(text: comments, icon: Icons.chat),
-                        SizedBox(width: 5,),
-                        _iconAndData(text: likes, icon: Icons.favorite),
-                      ],
-                    ),
+                    _iconAndData(text: postData.commentCount, icon: Icons.chat),
                   ],
                 ),
               ),
@@ -76,7 +64,7 @@ class HotTalkItem extends StatelessWidget {
               ),
             ],
           ),
-          // 태그
+          // 티어
           Container(
             alignment: Alignment.center,
             padding: EdgeInsets.symmetric(horizontal: 7),
@@ -85,7 +73,7 @@ class HotTalkItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(200),
               color: litePointColor,
             ),
-            child: Text(teg, style: boldText(size: 11, color: pointColor),),
+            child: Text(postData.authorTier, style: semiBoldText(size: 11, color: pointColor),),
           ),
         ],
       ),

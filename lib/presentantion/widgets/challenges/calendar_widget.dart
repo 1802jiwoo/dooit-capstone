@@ -107,7 +107,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
               ),
               child: Text(
                 provider.choiceStartDay ? '끝나는 날 정하기' : provider.lastDay != null ? '끝내기' : '시작하는 날 정하기',
-                style: boldText(size: 16, color: Colors.white),
+                style: semiBoldText(size: 16, color: Colors.white),
               ),
             ),
           ),

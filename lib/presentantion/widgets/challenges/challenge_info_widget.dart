@@ -54,11 +54,11 @@ class _ChallengeInfoWidgetState extends State<ChallengeInfoWidget> {
                 children: [
                   Text(
                     widget.provider.challengeType,
-                    style: boldText(size: 25, color: pointColor),
+                    style: semiBoldText(size: 25, color: pointColor),
                   ),
                   Text(
                     ' 챌린지를 선택했어요',
-                    style: boldText(size: 25, color: Colors.black),
+                    style: semiBoldText(size: 25, color: Colors.black),
                   ),
                 ],
               ),
@@ -69,7 +69,7 @@ class _ChallengeInfoWidgetState extends State<ChallengeInfoWidget> {
                 SizedBox(width: 20),
                 Text(
                   '언제 도전할까요?',
-                  style: boldText(size: 16, color: Colors.black),
+                  style: semiBoldText(size: 16, color: Colors.black),
                 ),
               ],
             ),
@@ -108,7 +108,7 @@ class _ChallengeInfoWidgetState extends State<ChallengeInfoWidget> {
                   children: [
                     Text(
                       '${DateFormat('yyyy-MM-dd').format(widget.provider.start)} ~ ${DateFormat('yyyy-MM-dd').format(widget.provider.end)}',
-                      style: boldText(
+                      style: semiBoldText(
                         size: 16,
                         color:
                             widget.provider.selectDate
@@ -135,7 +135,7 @@ class _ChallengeInfoWidgetState extends State<ChallengeInfoWidget> {
                 SizedBox(width: 20),
                 Text(
                   '몇시간을 도전할까요?',
-                  style: boldText(size: 16, color: Colors.black),
+                  style: semiBoldText(size: 16, color: Colors.black),
                 ),
               ],
             ),
@@ -165,13 +165,13 @@ class _ChallengeInfoWidgetState extends State<ChallengeInfoWidget> {
                           height: 30,
                           child: Text(
                             '${i + 0}',
-                            style: boldText(size: 16, color: Colors.black),
+                            style: semiBoldText(size: 16, color: Colors.black),
                           ),
                         ),
                     ],
                   ),
                 ),
-                Text(' 시간', style: boldText(size: 20, color: Colors.black)),
+                Text(' 시간', style: semiBoldText(size: 20, color: Colors.black)),
                 SizedBox(width: 10),
                 // 분 입력
                 Expanded(
@@ -194,13 +194,13 @@ class _ChallengeInfoWidgetState extends State<ChallengeInfoWidget> {
                           height: 30,
                           child: Text(
                             '${i + 0}',
-                            style: boldText(size: 16, color: Colors.black),
+                            style: semiBoldText(size: 16, color: Colors.black),
                           ),
                         ),
                     ],
                   ),
                 ),
-                Text(' 분', style: boldText(size: 20, color: Colors.black)),
+                Text(' 분', style: semiBoldText(size: 20, color: Colors.black)),
               ],
             ),
 
@@ -240,7 +240,7 @@ class _ChallengeInfoWidgetState extends State<ChallengeInfoWidget> {
                     children: [
                       Text(
                         '다음',
-                        style: boldText(size: 16, color: Colors.white),
+                        style: semiBoldText(size: 16, color: Colors.white),
                       ),
                       Icon(Icons.arrow_forward, size: 25, color: Colors.white),
                     ],
@@ -269,7 +269,7 @@ class _ChallengeInfoWidgetState extends State<ChallengeInfoWidget> {
           child: Row(
             children: [
               SizedBox(width: 20),
-              Text(title, style: boldText(size: 16, color: Colors.black)),
+              Text(title, style: semiBoldText(size: 16, color: Colors.black)),
             ],
           ),
         ),
@@ -284,11 +284,11 @@ class _ChallengeInfoWidgetState extends State<ChallengeInfoWidget> {
           child: TextField(
             controller: controller,
             keyboardType: keyboard,
-            style: boldText(size: 16, color: Colors.black),
+            style: semiBoldText(size: 16, color: Colors.black),
             maxLines: rows ? null : 1,
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: boldText(size: 16, color: Color(0xFFA6A6A6)),
+              hintStyle: semiBoldText(size: 16, color: Color(0xFFA6A6A6)),
               enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
               border: OutlineInputBorder(borderSide: BorderSide.none),
             ),

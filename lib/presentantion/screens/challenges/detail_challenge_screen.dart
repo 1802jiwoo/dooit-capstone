@@ -25,11 +25,6 @@ class _DetailChallengeScreenState extends State<DetailChallengeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       detailChallengeProvider.addListener(updateScreen);
       await detailChallengeProvider.getChallenge(widget.id);
-      // if(detailChallengeProvider.challenge!.myProgressList != null) {
-      //   if(detailChallengeProvider.challenge!.challengeType != 'TOTAL') {
-      //     detailChallengeProvider.setThreeDays();
-      //   }
-      // }
     });
   }
 
@@ -63,10 +58,12 @@ class _DetailChallengeScreenState extends State<DetailChallengeScreen> {
                 children: [
                   Column(
                     children: [
+                      // 챌린지 이미지
                       Container(
                         width: double.infinity,
                         height: 250,
                         color: Colors.grey,
+                        child: Image.asset('assets/images/challenge_imgs/9.png', fit: BoxFit.cover,),
                       ),
                       // 설명
                       Container(
@@ -81,7 +78,7 @@ class _DetailChallengeScreenState extends State<DetailChallengeScreen> {
                             SizedBox(height: 5),
                             Text(
                               detailChallengeProvider.challenge!.challengeTitle,
-                              style: boldText(size: 22, color: Colors.black),
+                              style: semiBoldText(size: 22, color: Colors.black),
                             ),
                             SizedBox(height: 8),
                             Text(
@@ -123,7 +120,7 @@ class _DetailChallengeScreenState extends State<DetailChallengeScreen> {
                                       SizedBox(width: 5),
                                       Text(
                                         '${detailChallengeProvider.challenge!.challengeBetPoint}',
-                                        style: boldText(
+                                        style: semiBoldText(
                                           size: 12,
                                           color: Colors.white,
                                         ),
@@ -164,7 +161,7 @@ class _DetailChallengeScreenState extends State<DetailChallengeScreen> {
                                         borderRadius: BorderRadius.circular(200),
                                         color: litePointColor,
                                       ),
-                                      child: Text(detailChallengeProvider.challenge!.tier, style: boldText(size: 9, color: pointColor),),
+                                      child: Text(detailChallengeProvider.challenge!.tier, style: semiBoldText(size: 9, color: pointColor),),
                                     ),
                                     SizedBox(height: 3,),
                                     Text(detailChallengeProvider.challenge!.userName, style: mediumText(size: 14, color: greyColor),),
@@ -195,11 +192,11 @@ class _DetailChallengeScreenState extends State<DetailChallengeScreen> {
                               children: [
                                 Text(
                                   detailChallengeProvider.challenge!.challengeType == 'DAILY' ? 'DAILY' : 'TOTAL',
-                                  style: boldText(size: 22, color: pointColor),
+                                  style: semiBoldText(size: 22, color: pointColor),
                                 ),
                                 Text(
                                   ' 인증은 이렇게 해요',
-                                  style: boldText(
+                                  style: semiBoldText(
                                     size: 22,
                                     color: Colors.black,
                                   ),
@@ -247,8 +244,8 @@ class _DetailChallengeScreenState extends State<DetailChallengeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('모인 포인트 ', style: boldText(size: 14, color: Colors.black),),
-                        Text('${detailChallengeProvider.challenge!.totalBetPoint}개', style: boldText(size: 14, color: pointColor),),
+                        Text('모인 포인트 ', style: semiBoldText(size: 14, color: Colors.black),),
+                        Text('${detailChallengeProvider.challenge!.totalBetPoint}개', style: semiBoldText(size: 14, color: pointColor),),
                         SizedBox(width: 10,),
                         Text('${detailChallengeProvider.challenge!.participants}명', style: mediumText(size: 12, color: greyColor),),
                       ],
@@ -287,7 +284,7 @@ class _DetailChallengeScreenState extends State<DetailChallengeScreen> {
                                 detailChallengeProvider.challenge!.challengeType == 'TOTAL'
                                     ? '${detailChallengeProvider.getStartDate()} ~ ${detailChallengeProvider.getEndDate()}'
                                     : detailChallengeProvider.getStartDate(),
-                                style: boldText(size: 14, color: Colors.black),
+                                style: semiBoldText(size: 14, color: Colors.black),
                               ),
                               // 밑줄
                               Container(
@@ -337,7 +334,7 @@ class _DetailChallengeScreenState extends State<DetailChallengeScreen> {
                         ),
                         child: Text(
                           '참가하기',
-                          style: boldText(size: 16, color: Colors.white),
+                          style: semiBoldText(size: 16, color: Colors.white),
                         ),
                       ),
                     ),

@@ -2,12 +2,14 @@ import 'package:capstone_project_2/data/models/challenge_list_model.dart';
 import 'package:capstone_project_2/data/models/challenge_model.dart';
 import 'package:capstone_project_2/data/models/view_challenge_model.dart';
 import 'package:capstone_project_2/data/repositories/challenge_repository.dart';
+import 'package:capstone_project_2/data/repositories/user_repository.dart';
 import 'package:flutter/cupertino.dart';
 
 final ChallengeProvider challengeProvider = ChallengeProvider();
 
 class ChallengeProvider extends ChangeNotifier {
   final ChallengeRepository challengeRepository = ChallengeRepository();
+  final UserRepository userRepository = UserRepository();
   final ScrollController scrollController = ScrollController();
   ChallengeListModel? challengesData;
   List<ViewChallengeModel> challenges = [];
@@ -32,6 +34,11 @@ class ChallengeProvider extends ChangeNotifier {
         await getChallengesData();
       }
     });
+  }
+
+  Future<void> getMyData() async {
+    point = (await userRepository.getMyData())?.totalPoint ?? 0;
+    notifyListeners();
   }
 
   void changeChallengeType(String type) {

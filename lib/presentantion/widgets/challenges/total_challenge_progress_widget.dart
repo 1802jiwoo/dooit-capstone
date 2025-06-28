@@ -32,11 +32,11 @@ class TotalChallengeProgressWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(width: 20,),
-              Text(getAchievementText(), style: boldText(size: 16, color: Colors.black)),
+              Text(getAchievementText(), style: semiBoldText(size: 16, color: Colors.black)),
               // SizedBox(width: 10,),
               Spacer(),
               Text('${achievement * 100 >= 100 ? 100 : (achievement * 100)
-                  .round()}%', style: boldText(
+                  .round()}%', style: semiBoldText(
                   size: 16, color: achievement * 100 == 100 || check ? Colors.green : Colors.black),),
               SizedBox(width: 20,),
             ],

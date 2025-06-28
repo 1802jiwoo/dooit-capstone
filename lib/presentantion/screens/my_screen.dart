@@ -1,5 +1,6 @@
 import 'package:capstone_project_2/common/colors.dart';
 import 'package:capstone_project_2/presentantion/providers/my_provider.dart';
+import 'package:capstone_project_2/presentantion/screens/shop/shop_screen.dart';
 import 'package:capstone_project_2/presentantion/widgets/change_name_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class _MyScreenState extends State<MyScreen> {
                         children: [
                           Text(
                             'MY Dooit',
-                            style: boldText(size: 25, color: Colors.black),
+                            style: blackText(size: 30, color: Colors.black),
                           ),
                           Spacer(),
                           Icon(
@@ -80,96 +81,102 @@ class _MyScreenState extends State<MyScreen> {
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: Column(
                         children: [
-                          Row(
-                            children: [
-                              // 프로필 캐릭?
-                              SizedBox(
-                                width: MediaQuery.sizeOf(context).width * 0.45,
-                                height: MediaQuery.sizeOf(context).width * 0.45,
-                                child: Stack(
-                                  alignment: Alignment.bottomRight,
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/profile_image.png',
-                                      fit: BoxFit.cover,
-                                    ),
-                                    // Padding(
-                                    //   padding: EdgeInsets.all(10),
-                                    //   child: GestureDetector(
-                                    //     onTap: () {},
-                                    //     child: Container(
-                                    //       width: 30,
-                                    //       height: 30,
-                                    //       decoration: BoxDecoration(
-                                    //         shape: BoxShape.circle,
-                                    //         color: Colors.black,
-                                    //       ),
-                                    //       child: Icon(
-                                    //         Icons.arrow_forward,
-                                    //         size: 20,
-                                    //         color: Colors.white,
-                                    //       ),
-                                    //     ),
-                                    //   ),
-                                    // )
-                                  ],
+                          SizedBox(
+                            width: MediaQuery.sizeOf(context).width * 0.8,
+                            height: MediaQuery.sizeOf(context).width * 0.8,
+                            child: Stack(
+                              alignment: Alignment.bottomRight,
+                              children: [
+                                Image.asset(
+                                  'assets/images/profile_image.png',
+                                  fit: BoxFit.cover,
                                 ),
-                              ),
-                              SizedBox(width: 10),
-                              // 이름 및 포인트
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                // Padding(
+                                //   padding: EdgeInsets.all(10),
+                                //   child: GestureDetector(
+                                //     onTap: () {},
+                                //     child: Container(
+                                //       width: 30,
+                                //       height: 30,
+                                //       decoration: BoxDecoration(
+                                //         shape: BoxShape.circle,
+                                //         color: Colors.black,
+                                //       ),
+                                //       child: Icon(
+                                //         Icons.arrow_forward,
+                                //         size: 20,
+                                //         color: Colors.white,
+                                //       ),
+                                //     ),
+                                //   ),
+                                // )
+                              ],
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // 티어
+                              Row(
                                 children: [
+                                  SizedBox(width: 10,),
                                   Container(
                                     alignment: Alignment.center,
                                     padding: EdgeInsets.symmetric(
-                                      horizontal: 7,
+                                      horizontal: 10,
                                     ),
-                                    height: 20,
+                                    height: 30,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(200),
                                       color: litePointColor,
                                     ),
                                     child: Text(
                                       myProvider.userData!.tier,
-                                      style: boldText(
-                                        size: 9,
+                                      style: semiBoldText(
+                                        size: 14,
                                         color: pointColor,
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 5),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        myProvider.userData!.name,
-                                        style: boldText(
-                                          size: 18,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      SizedBox(width: 5),
-                                      GestureDetector(
-                                        onTap: () {
-                                          Navigator.of(context).push(
-                                            CupertinoPageRoute(
-                                              builder:
-                                                  (context) => ChangeNameWidget(userName: myProvider.userData!.name,),
-                                            ),
-                                          ).then((value) async {
-                                            await myProvider.getMyData();
-                                          },);
-                                        },
-                                        child: Icon(
-                                          Icons.edit,
-                                          size: 20,
-                                          color: greyColor,
-                                        ),
-                                      ),
-                                    ],
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              // 이름
+                              Row(
+                                children: [
+                                  SizedBox(width: 20,),
+                                  Text(
+                                    myProvider.userData!.name,
+                                    style: semiBoldText(
+                                      size: 28,
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                  SizedBox(height: 10),
-                                  // 포인트
+                                  SizedBox(width: 5),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        CupertinoPageRoute(
+                                          builder:
+                                              (context) => ChangeNameWidget(userName: myProvider.userData!.name,),
+                                        ),
+                                      ).then((value) async {
+                                        await myProvider.getMyData();
+                                      },);
+                                    },
+                                    child: Icon(
+                                      Icons.edit,
+                                      size: 20,
+                                      color: greyColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              // 포인트
+                              Row(
+                                children: [
+                                  SizedBox(width: 10,),
                                   Container(
                                     alignment: Alignment.center,
                                     padding: EdgeInsets.symmetric(
@@ -182,9 +189,9 @@ class _MyScreenState extends State<MyScreen> {
                                     ),
                                     child: Row(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                      CrossAxisAlignment.center,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Image.asset(
                                           'assets/images/star.png',
@@ -193,14 +200,14 @@ class _MyScreenState extends State<MyScreen> {
                                         SizedBox(width: 2),
                                         Text(
                                           '${myProvider.userData!.totalPoint}',
-                                          style: boldText(
+                                          style: semiBoldText(
                                             size: 16,
                                             color: Colors.black,
                                           ),
                                         ),
                                         Text(
                                           ' 개',
-                                          style: boldText(
+                                          style: semiBoldText(
                                             size: 16,
                                             color: Color(0xFFA6A6A6),
                                           ),
@@ -212,7 +219,60 @@ class _MyScreenState extends State<MyScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: MediaQuery.sizeOf(context).height * 0.03),
+
+                    // 배너
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      width: double.infinity,
+                      height: 92,
+                      color: Color(0xFFFFD452),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(width: 15),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                height: 20,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(200),
+                                  color: Color(0xFF8BC6C1),
+                                ),
+                                child: Text(
+                                  'CUIDE',
+                                  style: semiBoldText(
+                                    size: 10,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 10,),
+                              Text(
+                                '운동 타이머 헬스장에서 함께!',
+                                style: semiBoldText(size: 24, color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          Spacer(),
+                          Container(width: 60, height: 60, color: Colors.blue),
+                        ],
+                      ),
+                    ),
+
+                    SizedBox(height: MediaQuery.sizeOf(context).height * 0.04),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12),
+                      child: Column(
+                        children: [
                           // 총 운동 시간
                           Container(
                             padding: EdgeInsets.all(20),
@@ -241,7 +301,7 @@ class _MyScreenState extends State<MyScreen> {
                                     SizedBox(height: 4),
                                     Text(
                                       '${myProvider.hour! == 0 ? '' : myProvider.hour!}${myProvider.hour! == 0 ? '' : '시간'} ${myProvider.minutes! != 0 ? myProvider.minutes! : ''}${myProvider.minutes! != 0 ? '분' : ''}',
-                                      style: boldText(
+                                      style: semiBoldText(
                                         size: 20,
                                         color: Colors.black,
                                       ),
@@ -259,10 +319,14 @@ class _MyScreenState extends State<MyScreen> {
                               ],
                             ),
                           ),
-
                           SizedBox(height: 10),
                           // 선택 항목
                           GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(CupertinoPageRoute(builder: (context) => ShopScreen(),)).then((value) async {
+                                await myProvider.getMyData();
+                              },);
+                            },
                             child: Container(
                               padding: EdgeInsets.symmetric(vertical: 10),
                               decoration: BoxDecoration(
@@ -280,7 +344,7 @@ class _MyScreenState extends State<MyScreen> {
                                   SizedBox(width: 10),
                                   Text(
                                     '상품 구매',
-                                    style: boldText(
+                                    style: semiBoldText(
                                       size: 16,
                                       color: pointColor,
                                     ),
@@ -289,69 +353,7 @@ class _MyScreenState extends State<MyScreen> {
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    // 배너
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 12),
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      width: double.infinity,
-                      height: 75,
-                      color: Color(0xFFFFD452),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(width: 15),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                alignment: Alignment.center,
-                                padding: EdgeInsets.symmetric(horizontal: 5),
-                                height: 14,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(200),
-                                  color: pointColor,
-                                ),
-                                child: Text(
-                                  'CUIDE',
-                                  style: boldText(
-                                    size: 10,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                '운동 타이머 헬스장에서 함께!',
-                                style: boldText(size: 22, color: Colors.black),
-                              ),
-                            ],
-                          ),
-                          Spacer(),
-                          Container(width: 60, height: 60, color: Colors.blue),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12),
-                      child: Column(
-                        children: [
-                          _myContentBox(
-                            title: '나의 활동',
-                            content: myProvider.myActivity,
-                          ),
-                          SizedBox(height: 15),
-                          _myContentBox(
-                            title: '나의 활동',
-                            content: myProvider.myActivity,
-                          ),
-                          SizedBox(height: 15),
-                          _myContentBox(
-                            title: '나의 활동',
-                            content: myProvider.myActivity,
-                          ),
+                          SizedBox(height: 40,),
                         ],
                       ),
                     ),
@@ -361,46 +363,46 @@ class _MyScreenState extends State<MyScreen> {
     );
   }
 
-  Widget _myContentBox({
-    required String title,
-    required List<Map<String, dynamic>> content,
-  }) {
-    return Container(
-      padding: EdgeInsets.all(15),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.white,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title, style: boldText(size: 11, color: greyColor)),
-          ...content.map((e) {
-            return Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.only(top: 12),
-              width: double.infinity,
-              child: GestureDetector(
-                onTap: e['function'],
-                child: Row(
-                  children: [
-                    Icon(e['icon'], size: 20, color: greyColor),
-                    SizedBox(width: 12),
-                    Text(
-                      e['text'],
-                      style: boldText(size: 14, color: Colors.black),
-                    ),
-                    Spacer(),
-                    Icon(Icons.arrow_forward_ios, size: 20, color: greyColor),
-                  ],
-                ),
-              ),
-            );
-          }),
-        ],
-      ),
-    );
-  }
+  // Widget _myContentBox({
+  //   required String title,
+  //   required List<Map<String, dynamic>> content,
+  // }) {
+  //   return Container(
+  //     padding: EdgeInsets.all(15),
+  //     width: double.infinity,
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.circular(20),
+  //       color: Colors.white,
+  //     ),
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: [
+  //         Text(title, style: boldText(size: 11, color: greyColor)),
+  //         ...content.map((e) {
+  //           return Container(
+  //             alignment: Alignment.center,
+  //             padding: EdgeInsets.only(top: 12),
+  //             width: double.infinity,
+  //             child: GestureDetector(
+  //               onTap: e['function'],
+  //               child: Row(
+  //                 children: [
+  //                   Icon(e['icon'], size: 20, color: greyColor),
+  //                   SizedBox(width: 12),
+  //                   Text(
+  //                     e['text'],
+  //                     style: boldText(size: 14, color: Colors.black),
+  //                   ),
+  //                   Spacer(),
+  //                   Icon(Icons.arrow_forward_ios, size: 20, color: greyColor),
+  //                 ],
+  //               ),
+  //             ),
+  //           );
+  //         }),
+  //       ],
+  //     ),
+  //   );
+  // }
 
 }

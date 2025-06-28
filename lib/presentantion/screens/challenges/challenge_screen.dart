@@ -2,7 +2,7 @@ import 'package:capstone_project_2/common/colors.dart';
 import 'package:capstone_project_2/common/fonts.dart';
 import 'package:capstone_project_2/presentantion/component/challenge_type_box.dart';
 import 'package:capstone_project_2/presentantion/screens/challenges/add_challenge_screen.dart';
-import 'package:capstone_project_2/presentantion/screens/challenges/search_challenge_screen.dart';
+import 'package:capstone_project_2/presentantion/screens/search_challenge_screen.dart';
 import 'package:capstone_project_2/presentantion/widgets/challenges/challenge_item.dart';
 import 'package:capstone_project_2/presentantion/widgets/challenges/my_challenge_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,9 +23,10 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       challengeProvider.addListener(updateScreen);
-      challengeProvider.getChallengesData();
+      await challengeProvider.getChallengesData();
+      await challengeProvider.getMyData();
       challengeProvider.addList();
     });
   }
@@ -51,7 +52,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                 children: [
                   Text(
                     'CHALLENGE',
-                    style: boldText(size: 25, color: Colors.black),
+                    style: blackText(size: 30, color: Colors.black),
                   ),
                   Spacer(),
                   Container(
@@ -68,8 +69,8 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                       children: [
                         Image.asset('assets/images/star.png', width: 25,),
                         SizedBox(width: 2,),
-                        Text('${challengeProvider.point}', style: boldText(size: 16, color: Colors.black),),
-                        Text(' 개', style: boldText(size: 16, color: Color(0xFFA6A6A6)),),
+                        Text('${challengeProvider.point}', style: semiBoldText(size: 16, color: Colors.black),),
+                        Text(' 개', style: semiBoldText(size: 16, color: Color(0xFFA6A6A6)),),
                       ],
                     ),
                   ),
@@ -115,7 +116,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                       }, selectType: challengeProvider.challengeType, height: 30,),
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(CupertinoPageRoute(builder: (context) => SearchChallengeScreen(),));
+                          Navigator.of(context).push(CupertinoPageRoute(builder: (context) => SearchScreen(searchTarget: '챌린지',),));
                         },
                         child: Container(
                           alignment: Alignment.center,

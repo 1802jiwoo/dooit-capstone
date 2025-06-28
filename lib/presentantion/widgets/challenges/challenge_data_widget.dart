@@ -63,8 +63,8 @@ class ChallengeDataWidget extends StatelessWidget {
                     children: [
                       Image.asset('assets/images/star.png', width: 25,),
                       SizedBox(width: 2,),
-                      Text(provider.betPointController.text, style: boldText(size: 16, color: Colors.white),),
-                      Text(' 개', style: boldText(size: 16, color: Color(0xFFA6A6A6)),),
+                      Text(provider.betPointController.text, style: semiBoldText(size: 16, color: Colors.white),),
+                      Text(' 개', style: semiBoldText(size: 16, color: Color(0xFFA6A6A6)),),
                     ],
                   ),
                 ),
@@ -88,7 +88,7 @@ class ChallengeDataWidget extends StatelessWidget {
                 ),
                 child: Text(
                   '챌린지 개설 완료',
-                  style: boldText(size: 16, color: Colors.white),
+                  style: semiBoldText(size: 16, color: Colors.white),
                 ),
               ),
             ),
@@ -114,7 +114,7 @@ class ChallengeDataWidget extends StatelessWidget {
           child: Row(
             children: [
               SizedBox(width: 20),
-              Text(title, style: boldText(size: 16, color: Colors.black)),
+              Text(title, style: semiBoldText(size: 16, color: Colors.black)),
             ],
           ),
         ),
@@ -129,11 +129,11 @@ class ChallengeDataWidget extends StatelessWidget {
           child: TextField(
             controller: controller,
             keyboardType: keyboard,
-            style: boldText(size: 16, color: Colors.black),
+            style: semiBoldText(size: 16, color: Colors.black),
             maxLines: rows ? null : 1,
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: boldText(size: 16, color: Color(0xFFA6A6A6)),
+              hintStyle: semiBoldText(size: 16, color: Color(0xFFA6A6A6)),
               enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
               border: OutlineInputBorder(borderSide: BorderSide.none),
             ),

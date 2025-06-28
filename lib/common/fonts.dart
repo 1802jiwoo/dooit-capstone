@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 
-TextStyle boldText({required double size, required Color color}) {
+TextStyle blackText({required double size, required Color color}) {
   return TextStyle(
     fontSize: size,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w900,
+    fontFamily: 'Pretendard',
+    color: color,
+  );
+}
+
+TextStyle semiBoldText({required double size, required Color color}) {
+  return TextStyle(
+    fontSize: size,
+    fontWeight: FontWeight.w700,
+    fontFamily: 'Pretendard',
     color: color,
   );
 }
@@ -11,8 +21,9 @@ TextStyle boldText({required double size, required Color color}) {
 TextStyle mediumText({required double size, required Color color}) {
   return TextStyle(
     fontSize: size,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Pretendard',
     color: color,
-    height: 1.2
+    // height: 1.2,
   );
 }

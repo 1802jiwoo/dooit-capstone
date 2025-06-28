@@ -1,20 +1,22 @@
 import 'package:capstone_project_2/common/colors.dart';
 import 'package:capstone_project_2/common/fonts.dart';
-import 'package:capstone_project_2/presentantion/providers/challenges/search_challenge_provider.dart';
+import 'package:capstone_project_2/presentantion/providers/search_challenge_provider.dart';
 import 'package:capstone_project_2/presentantion/screens/challenges/add_challenge_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/challenges/challenge_item.dart';
+import '../widgets/challenges/challenge_item.dart';
 
-class SearchChallengeScreen extends StatefulWidget {
-  const SearchChallengeScreen({super.key});
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key, required this.searchTarget});
+
+  final String searchTarget;
 
   @override
-  State<SearchChallengeScreen> createState() => _SearchChallengeScreenState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _SearchChallengeScreenState extends State<SearchChallengeScreen> {
+class _SearchScreenState extends State<SearchScreen> {
 
   final SearchChallengeProvider provider = SearchChallengeProvider();
   void updateScreen() => setState(() {});
@@ -24,7 +26,8 @@ class _SearchChallengeScreenState extends State<SearchChallengeScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       provider.addListener(updateScreen);
-      provider.addList();
+      provider.setTexts(widget.searchTarget);
+      provider.addList(widget.searchTarget);
     });
   }
 
@@ -64,27 +67,27 @@ class _SearchChallengeScreenState extends State<SearchChallengeScreen> {
                       Expanded(child: TextField(
                         controller: provider.keywordController,
                         textInputAction: TextInputAction.search,
-                        style: boldText(size: 16, color: Colors.black),
+                        style: semiBoldText(size: 16, color: Colors.black),
                         decoration: InputDecoration(
-                            hintText: '챌린지 이름을 검색해보세요',
-                            hintStyle: boldText(size: 16, color: greyColor),
+                            hintText: provider.searchHintText,
+                            hintStyle: semiBoldText(size: 16, color: greyColor),
                             border: InputBorder.none
                         ),
                         onSubmitted: (value) {
-                          provider.getChallengesData();
+                          provider.getData(widget.searchTarget);
                         },
                         onTap: () {
                           if(provider.challenges.isNotEmpty) {
                             provider.resetKeyword();
                           };
-                          provider.resetChallenges();
+                          provider.resetList(widget.searchTarget);
                         },
                       )),
                       SizedBox(width: 5,),
                       GestureDetector(
                         onTap: () {
                           provider.resetKeyword();
-                          provider.resetChallenges();
+                          provider.resetList(widget.searchTarget);
                         },
                         child: Icon(Icons.cancel, size: 25, color: greyColor,),
                       ),
@@ -95,7 +98,7 @@ class _SearchChallengeScreenState extends State<SearchChallengeScreen> {
             ),
             SizedBox(height: 20,),
             provider.challengesData == null
-                ? provider.keywordController.text.isEmpty ? SizedBox.shrink() : Text('챌린지를 불러오는 중 입니다.')
+                ? provider.keywordController.text.isEmpty ? SizedBox.shrink() : Text('검색 결과를 불러오는 중 입니다.')
                 : provider.challengesData!.total_elements == 0
                     // 챌린지 겁색 안된 경우
                   ? Expanded(
@@ -106,7 +109,7 @@ class _SearchChallengeScreenState extends State<SearchChallengeScreen> {
                             child: Text('${provider.challengesData!.total_elements}개의 검색결과', style: mediumText(size: 12, color: greyColor),),
                           ),
                           Spacer(),
-                          Text('\'${provider.keywordController.text}\'과 관련한 챌린지를 찾을 수 없어요.\n직접 만들어 보세요!',
+                          Text('\'${provider.keywordController.text}\' ${provider.nothingText}',
                             style: mediumText(
                                 size: 14, color: greyColor), textAlign: TextAlign.center,),
                           SizedBox(height: 20,),
@@ -123,8 +126,8 @@ class _SearchChallengeScreenState extends State<SearchChallengeScreen> {
                                 borderRadius: BorderRadius.circular(200),
                               ),
                               child: Text(
-                                '챌린지 만들기',
-                                style: boldText(size: 16, color: Colors.white),
+                                provider.buttonText,
+                                style: semiBoldText(size: 16, color: Colors.white),
                               ),
                             ),
                           ),

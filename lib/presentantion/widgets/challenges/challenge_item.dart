@@ -79,12 +79,12 @@ class ChallengeItem extends StatelessWidget {
                       children: [
                         Image.asset('assets/images/star.png', width: 20,),
                         SizedBox(width: 5,),
-                        Text('${challenge.challengeBetPoint}', style: boldText(size: 12, color: Colors.white),)
+                        Text('${challenge.challengeBetPoint}', style: semiBoldText(size: 12, color: Colors.white),)
                       ],
                     ),
                   ),
                 ],),
-                Text(challenge.challengeTitle, style: boldText(size: 16, color: Colors.black),),
+                Text(challenge.challengeTitle, style: semiBoldText(size: 16, color: Colors.black),),
                 Text(challenge.challengeDescription, style: mediumText(size: 11, color: Color(0xFFA6A6A6)),),
                 Text('${challenge.startDate} - ${challenge.startDate}', style: mediumText(size: 11, color: Color(0xFFA6A6A6)),),
               ],

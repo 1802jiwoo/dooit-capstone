@@ -59,7 +59,7 @@ class DailyChallengeProgressWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10,),
-              Text(provider.getDate(provider.challenge!.myProgressList![i].day), style: boldText(size: 14, color: Colors.black),)
+              Text(provider.getDate(provider.challenge!.myProgressList![i].day), style: semiBoldText(size: 14, color: Colors.black),)
             ],
           ),
         );

@@ -60,8 +60,9 @@ class _ChangeNameWidgetState extends State<ChangeNameWidget> {
               ),
 
               SizedBox(height: 150,),
-              Text('Dooit에서\n사용할 이름이에요', style: boldText(size: 28, color: Colors.black), textAlign: TextAlign.center,),
+              Text('Dooit에서\n사용할 이름이에요', style: semiBoldText(size: 28, color: Colors.black), textAlign: TextAlign.center,),
               SizedBox(height: 40,),
+
               // 이름 입력창
               Container(
                 padding: EdgeInsets.all(10),
@@ -71,26 +72,21 @@ class _ChangeNameWidgetState extends State<ChangeNameWidget> {
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    TextField(
-                      controller: myProvider.nameController,
-                      textAlign: TextAlign.center,
-                      style: boldText(size: 30, color: Colors.black),
-                      decoration: InputDecoration(
-                        hintText: widget.userName,
-                        hintStyle: boldText(size: 30, color: greyColor),
-                        enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
-                        border: OutlineInputBorder(borderSide: BorderSide.none),
-                      ),
-                    ),
-
-                  ],
-                )
+                child: TextField(
+                  controller: myProvider.nameController,
+                  textAlign: TextAlign.center,
+                  style: semiBoldText(size: 30, color: Colors.black),
+                  decoration: InputDecoration(
+                    hintText: widget.userName,
+                    hintStyle: semiBoldText(size: 30, color: greyColor),
+                    enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
+                    border: OutlineInputBorder(borderSide: BorderSide.none),
+                  ),
+                ),
               ),
+
               SizedBox(height: 10,),
-              Text(myProvider.nameError, style: boldText(size: 14, color: Colors.red),),
+              Text(myProvider.nameError, style: semiBoldText(size: 14, color: Colors.red),),
               SizedBox(height: 300,),
 
               // 변경하기 버튼
@@ -109,7 +105,7 @@ class _ChangeNameWidgetState extends State<ChangeNameWidget> {
                     borderRadius: BorderRadius.circular(200),
                     color: pointColor,
                   ),
-                  child: Text('변경하기', style: boldText(size: 20, color: Colors.white),),
+                  child: Text('변경하기', style: semiBoldText(size: 20, color: Colors.white),),
                 ),
               ),
             ],

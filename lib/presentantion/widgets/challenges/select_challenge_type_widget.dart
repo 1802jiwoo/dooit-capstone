@@ -15,9 +15,9 @@ class SelectChallengeTypeWidget extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 25),
-          child: Text('도전할 챌린지를 만들어 주세요', style: boldText(size: 25, color: Colors.black),),
+          child: Text('도전할 챌린지를 만들어 주세요', style: semiBoldText(size: 25, color: Colors.black),),
         ),
-        Text('챌린지 타입을 골라주세요', style: boldText(size: 16, color: Colors.black),),
+        Text('챌린지 타입을 골라주세요', style: semiBoldText(size: 16, color: Colors.black),),
         SizedBox(height: 10,),
         _typeBox(type: 'DAILY', content: '기간 내 매일 목표 운동 시간 달성 챌린지', ex: '매일 3시간 운동하기'),
         SizedBox(height: 10,),
@@ -48,7 +48,7 @@ class SelectChallengeTypeWidget extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(type, style: boldText(size: 16, color: Colors.black),),
+                Text(type, style: semiBoldText(size: 16, color: Colors.black),),
                 Spacer(),
                 Container(
                   alignment: Alignment.center,
@@ -62,8 +62,8 @@ class SelectChallengeTypeWidget extends StatelessWidget {
                 ),
               ],
             ),
-            Text(content, style: boldText(size: 14, color: greyColor),),
-            Text('ex) $ex', style: boldText(size: 12, color: Colors.orange),),
+            Text(content, style: semiBoldText(size: 14, color: greyColor),),
+            Text('ex) $ex', style: semiBoldText(size: 12, color: Colors.orange),),
           ],
         ),
       ),

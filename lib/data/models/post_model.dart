@@ -1,32 +1,35 @@
 class PostModel {
-  final String writer;
+  final int id;
   final String title;
-  final String description;
-  final int views;
-  final int comments;
-  final int likes;
-  final int minutes;
-  final String category;
+  final String content;
+  final String authorName;
+  final int authorId;
+  final String authorTier;
+  final int commentCount;
+  final String createdAt;
+  final String? updatedAt;
 
   PostModel({
-    required this.writer,
+    required this.id,
     required this.title,
-    required this.description,
-    required this.views,
-    required this.comments,
-    required this.likes,
-    required this.minutes,
-    required this.category,
+    required this.content,
+    required this.authorName,
+    required this.authorId,
+    required this.authorTier,
+    required this.commentCount,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
   factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
-    writer: json['writer'],
+    id: json['id'],
     title: json['title'],
-    description: json['description'],
-    views: json['views'],
-    comments: json['comments'],
-    likes: json['likes'],
-    minutes: json['minutes'],
-    category: json['category'],
+    content: json['content'],
+    authorName: json['authorName'],
+    authorId: json['authorId'],
+    authorTier: json['authorTier'],
+    commentCount: json['commentCount'],
+    createdAt: json['createdAt'],
+    updatedAt: json['updatedAt'],
   );
 }

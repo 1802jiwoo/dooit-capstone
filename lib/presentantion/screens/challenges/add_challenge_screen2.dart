@@ -49,7 +49,7 @@ class _AddChallengeScreen2State extends State<AddChallengeScreen2> {
                   children: [
                     Text(
                       'ADD CHALLENGE',
-                      style: boldText(size: 25, color: Colors.black),
+                      style: semiBoldText(size: 25, color: Colors.black),
                     ),
                     Spacer(),
                     GestureDetector(
@@ -128,7 +128,7 @@ class _AddChallengeScreen2State extends State<AddChallengeScreen2> {
                           children: [
                             Text(
                               '${DateFormat('yyyy-MM-dd').format(provider.start)} ~ ${DateFormat('yyyy-MM-dd').format(provider.end)}',
-                              style: boldText(
+                              style: semiBoldText(
                                 size: 16,
                                 color: Color(0xFFA6A6A6),
                               ),
@@ -230,7 +230,7 @@ class _AddChallengeScreen2State extends State<AddChallengeScreen2> {
                                   height: 30,
                                   child: Text(
                                     '${i + 0}',
-                                    style: boldText(
+                                    style: semiBoldText(
                                       size: 16,
                                       color: Colors.black,
                                     ),
@@ -241,7 +241,7 @@ class _AddChallengeScreen2State extends State<AddChallengeScreen2> {
                         ),
                         Text(
                           ' 시간',
-                          style: boldText(size: 20, color: Colors.black),
+                          style: semiBoldText(size: 20, color: Colors.black),
                         ),
                         SizedBox(width: 10),
                         // 분 입력
@@ -262,7 +262,7 @@ class _AddChallengeScreen2State extends State<AddChallengeScreen2> {
                                   height: 30,
                                   child: Text(
                                     '${i + 0}',
-                                    style: boldText(
+                                    style: semiBoldText(
                                       size: 16,
                                       color: Colors.black,
                                     ),
@@ -273,7 +273,7 @@ class _AddChallengeScreen2State extends State<AddChallengeScreen2> {
                         ),
                         Text(
                           ' 분',
-                          style: boldText(size: 20, color: Colors.black),
+                          style: semiBoldText(size: 20, color: Colors.black),
                         ),
                       ],
                     ),
@@ -292,7 +292,7 @@ class _AddChallengeScreen2State extends State<AddChallengeScreen2> {
                           borderRadius: BorderRadius.circular(200),
                           color: pointColor,
                         ),
-                        child: Text('챌린지 생성하기', style: boldText(size: 16, color: Colors.white),),
+                        child: Text('챌린지 생성하기', style: semiBoldText(size: 16, color: Colors.white),),
                       ),
                     ),
                   ],
@@ -334,11 +334,11 @@ class _AddChallengeScreen2State extends State<AddChallengeScreen2> {
           child: TextField(
             controller: controller,
             keyboardType: keyboard,
-            style: boldText(size: 16, color: Colors.black),
+            style: semiBoldText(size: 16, color: Colors.black),
             maxLines: rows ? null : 1,
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: boldText(size: 16, color: Color(0xFFA6A6A6)),
+              hintStyle: semiBoldText(size: 16, color: Color(0xFFA6A6A6)),
               enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
               border: OutlineInputBorder(borderSide: BorderSide.none),
             ),
