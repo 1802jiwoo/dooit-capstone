@@ -403,28 +403,4 @@ class _MyScreenState extends State<MyScreen> {
     );
   }
 
-  Widget _iconBox({
-    required String image,
-    required String text,
-    required BuildContext context,
-  }) {
-    return GestureDetector(
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.all(10),
-            width: MediaQuery.sizeOf(context).width * 0.2,
-            height: MediaQuery.sizeOf(context).width * 0.2,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-            ),
-            child: Image.asset('assets/images/$image.png'),
-          ),
-          SizedBox(height: 10),
-          Text(text, style: mediumText(size: 14, color: Colors.black)),
-        ],
-      ),
-    );
-  }
 }

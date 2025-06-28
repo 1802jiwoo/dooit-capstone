@@ -15,6 +15,7 @@ class ChallengeModel {
   final String tier;
   final List<MyProgressModel>? myProgressList;
   final int? totalAchieveMinutes;
+  final String imgCode;
 
   ChallengeModel({
     required this.challengeId,
@@ -31,6 +32,7 @@ class ChallengeModel {
     required this.tier,
     required this.myProgressList,
     required this.totalAchieveMinutes,
+    required this.imgCode,
   });
 
   factory ChallengeModel.fromJson(Map<String, dynamic> json) {
@@ -55,7 +57,8 @@ class ChallengeModel {
       userName: json['user_name'],
       tier: json['tier'],
       myProgressList: myProgressList,
-      totalAchieveMinutes: json['total_acheive_minutes'] // 철자 나중에 바꿀꺼
+      totalAchieveMinutes: json['total_acheive_minutes'], // 철자 나중에 바꿀꺼
+      imgCode: json['imgCode'],
     );
   }
 }
