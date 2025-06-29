@@ -1,5 +1,5 @@
 import 'package:capstone_project_2/common/colors.dart';
-import 'package:capstone_project_2/data/models/view_challenge_model.dart';
+import 'package:capstone_project_2/data/models/challenge/view_challenge_model.dart';
 import 'package:capstone_project_2/presentantion/screens/challenges/detail_challenge_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +54,7 @@ class ChallengeItem extends StatelessWidget {
                     child: Text(challenge.challengeType, style: mediumText(size: 10, color: pointColor),),
                   ),
                   SizedBox(width: 10,),
-                  // 사간 태그
+                  // 시간 태그
                   Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.symmetric(horizontal: 8),

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../data/models/challenge_model.dart';
+import '../../../data/models/challenge/challenge_model.dart';
 import '../../../data/repositories/challenge_repository.dart';
 
 class MyChallengeProvider extends ChangeNotifier {

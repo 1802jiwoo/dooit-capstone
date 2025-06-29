@@ -1,4 +1,4 @@
-import 'package:capstone_project_2/data/models/my_progress_model.dart';
+import 'package:capstone_project_2/data/models/challenge/my_progress_model.dart';
 
 class ChallengeModel {
   final int challengeId;

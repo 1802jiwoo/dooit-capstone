@@ -5,16 +5,15 @@ class PostProvider extends ChangeNotifier {
   PostModel? postData;
 
   void getPostData() {
-    postData = PostModel(
-      authorName: '김똥개',
-      title: '가보실까여',
-      content: '제가 요즘 이승기한테 빠졌는데 원래도 진짜 좋아 했지만 앳된 모습 보니까 더 좋아 지더라구여',
-      commentCount: 4,
-      createdAt: '2025-06-26',
-      updatedAt: null,
-      id: 2,
-      authorId: 22,
-      authorTier: '헬고수'
-    );
+    postData = PostModel(id: 16,
+        title: '하루 살이',
+        content: '아 배고픈데 짜장면 먹을까요 아니면 그냥 계속 운동할까요',
+        authorName: 'quswldn',
+        authorId: 89,
+        authorTier: '헬고수',
+        commentCount: 40,
+        createdAt: '2025-06-05',
+        updatedAt: null);
+    notifyListeners();
   }
 }

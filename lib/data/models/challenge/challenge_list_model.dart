@@ -1,4 +1,4 @@
-import 'package:capstone_project_2/data/models/view_challenge_model.dart';
+import 'package:capstone_project_2/data/models/challenge/view_challenge_model.dart';
 
 class ChallengeListModel {
   final bool last;

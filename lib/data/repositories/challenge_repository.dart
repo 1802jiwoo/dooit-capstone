@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:capstone_project_2/data/models/challenge_model.dart';
+import 'package:capstone_project_2/data/models/challenge/challenge_model.dart';
 import 'package:http/http.dart';
 
-import '../models/challenge_list_model.dart';
+import '../models/challenge/challenge_list_model.dart';
 
 class ChallengeRepository {
 

@@ -1,29 +1,108 @@
 import 'package:capstone_project_2/common/colors.dart';
+import 'package:capstone_project_2/presentantion/providers/community/post_provider.dart';
 import 'package:flutter/material.dart';
 
-class PostScreen extends StatelessWidget {
-  const PostScreen({super.key});
+import '../../../common/fonts.dart';
+
+class PostScreen extends StatefulWidget {
+  const PostScreen({super.key, required this.postId});
+
+  final int postId;
+
+  @override
+  State<PostScreen> createState() => _PostScreenState();
+}
+
+class _PostScreenState extends State<PostScreen> {
+  final PostProvider provider = PostProvider();
+  void updateScreen() => setState(() {});
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      provider.addListener(updateScreen);
+      provider.getPostData();
+    });
+  }
+
+  @override
+  void dispose() {
+    provider.removeListener(updateScreen);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 30,
-                height: 30,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: greyColor,
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(3),
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Icon(Icons.arrow_back_ios, size: 25, color: Colors.black),
+                    ),
+                    Spacer(),
+                    Icon(Icons.more_vert, size: 25, color: Colors.black,),
+                  ],
                 ),
               ),
-              SizedBox(width: 10,),
-
-            ],
-          ),
-        ],
+            ),
+            SizedBox(height: 30,),
+            //티어
+            Row(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.symmetric(horizontal: 7),
+                  height: 23,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(200),
+                    color: litePointColor,
+                  ),
+                  child: Text(
+                    provider.postData!.authorTier,
+                    style: semiBoldText(size: 11, color: pointColor),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 15,),
+            // 이름
+            Row(
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: greyColor,
+                  ),
+                ),
+                SizedBox(width: 10,),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(provider.postData!.authorName, style: mediumText(size: 16, color: Colors.black),),
+                    Text(provider.postData!.createdAt, style: mediumText(size: 14, color: greyColor),),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 20,),
+            Text(provider.postData!.title, style: semiBoldText(size: 14, color: Colors.black),),
+          ],
+        ),
       ),
     ));
   }
